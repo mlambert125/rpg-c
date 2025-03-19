@@ -20,14 +20,6 @@ typedef struct Enemy {
     // script for dying (words, etc.)
 } Enemy;
 
-typedef struct Encounter {
-    Enemy* enemies;
-    // script for initializing the encounter (setting up enemies, etc.)
-    // script for starting fight
-    // script for victory (words, etc.)
-} Encounter;
-
-
 typedef struct TileDefinition {
     char name[255];
     bool walkable;
@@ -54,8 +46,9 @@ typedef struct Position {
 typedef struct Npc {
     char name[255];
     char dialogue[10][255];
+    Position startingPosition;
     Position* walkableTiles;
-    CharacterSprite* sprite;
+    int characterSpriteIndex;
     // script for starting a conversation (some kind of invocable menu here for shops, etc.)
     // script for ending a conversation
 } Npc;
@@ -77,6 +70,12 @@ typedef struct RpgMap {
     // script for exiting the map
 } RpgMap;
 
+typedef struct Encounter {
+    int enemyIndeces[9];
+    // script for initializing the encounter (setting up enemies, etc.)
+    // script for starting fight
+    // script for victory (words, etc.)
+} Encounter;
 
 int main() {
     return 0;
